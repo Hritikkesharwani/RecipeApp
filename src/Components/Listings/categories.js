@@ -31,6 +31,7 @@ const CategoryListings = ({}) => {
 
   const handleCardClick = (item) => {
     navigate(`/meal/category/${item.strCategory}`, {item});
+    window.scrollTo(0, 0);
   }
 
   return (

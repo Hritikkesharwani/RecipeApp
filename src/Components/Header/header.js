@@ -1,12 +1,32 @@
 import { Box, Typography, Slide, useTheme, TextField, Button, IconButton, Fab } from '@mui/material';
-import React from 'react';
+import React, {useState} from 'react';
 import { HeaderContent } from './styles';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import SearchIcon from '@mui/icons-material/Search';
+import axios from '../../api/axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
-    const theme = useTheme();
+  const theme = useTheme();
   const trigger = useScrollTrigger({ disableHysteresis: true });
+  const navigate = useNavigate();
+  const [text, setText] = useState('');
+
+  const handleChangeText = (e) => {
+    setText(e.target.value);
+  }
+
+  const handleSearch = async() => {
+    try {
+      let data = await axios.get(`search.php?s=${text}`)
+      console.log(data);
+      const { strCategory = "" } = data || {};
+      navigate(`/meal/category/${strCategory}`, {data});
+      window.scrollTo(0, 0);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
 
   return (
     <HeaderContent>
@@ -35,9 +55,10 @@ const Header = () => {
                       height:40
                     },
                   }}
+                onChange={(e) => handleChangeText(e)}
               />
               <Fab size="medium" color="primary" sx={{height:40}} >
-                <SearchIcon/>
+                <SearchIcon onClick={() => handleSearch()}/>
               </Fab>
             </Box>
           </Slide>
