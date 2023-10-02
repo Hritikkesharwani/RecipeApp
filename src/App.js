@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import { ThemeProvider } from '@mui/material/styles';
+import { lightTheme, darkTheme } from './theme';
+import ResponsiveAppBar from './Components/Appbar/Appbar';
+import Header from './Components/Header/header';
+import Footer from './Components/Footer/footer';
+import CategoryListings from './Components/Listings/categories';
+import MealListings from './Components/Listings/mealListings';
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const theme = isDarkMode ? darkTheme : lightTheme;
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+  console.log('isndie ')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <ResponsiveAppBar toggleTheme={toggleTheme}/>
+      <Header/>
+      <Routes>
+       <Route path = "/" element = {<CategoryListings />} />
+        <Route path = "/meal/:id" element = {<MealListings />} />
+        <Route path = "/meal/category/:name" element = {<MealListings />} />
+      </Routes>
+      <Footer/>
+      {/* Your application components */}
+      {/* Include the theme toggle button here */}
+    </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+
+
+
