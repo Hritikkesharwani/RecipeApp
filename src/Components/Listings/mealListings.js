@@ -4,16 +4,21 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, use } from 'react';
 import axios from '../../api/axios';
 import { FILTER_ITEM } from '../../contants';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const MealListings = ({}) => {
   const theme = useTheme();
   const [data, setData] = useState([]);
+  const {state} = useLocation();
+  const navigate = useNavigate();
   const pathname = window.location.pathname;
   const parts = pathname.split('/');
   const category = parts[parts.length - 1];
+  console.log(state)
+  const { strCategoryDescription = '', strCategory = ''} = state || {}
 
   const getMealData = async () => {
     try {
@@ -30,10 +35,20 @@ const MealListings = ({}) => {
     getMealData();
   }, []);
 
+  const handleMealCardClick = (item) => {
+    navigate(`/meal/${item.idMeal}`,{ state: { ...item } });
+    window.scrollTo(0, 0);
+  }
+
   return (
     <Container sx={{ marginTop: '32px' }}>
-      <Typography sx={{ fontSize: 36, fontWeight: 700, borderBottom: `5px solid ${theme.palette.primary.main}`, width: '100px' }}>
-        Meal
+    <Box sx={{border: `2px solid ${theme.palette.primary.main}`, padding:'16px'}}>
+    <Typography sx={{ fontSize: 16, fontWeight: 400}}>
+      {strCategoryDescription}
+      </Typography>  
+    </Box>
+      <Typography sx={{ fontSize: 36, fontWeight: 700, marginTop:'32px', borderBottom: `5px solid ${theme.palette.primary.main}`, width: '100px' }}>
+        {strCategory}
       </Typography>
       <Grid container items sx={{ marginTop: '32px' }} spacing={4}>
         {data.map((item) => {
@@ -42,6 +57,7 @@ const MealListings = ({}) => {
           return (
               <Grid xs={3} item>
                 <Card
+                onClick={() => handleMealCardClick(item)}
                   sx={{
                     maxWidth: 345,
                     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.3)', // Default box shadow

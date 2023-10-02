@@ -11,6 +11,7 @@ import Header from './Components/Header/header';
 import Footer from './Components/Footer/footer';
 import CategoryListings from './Components/Listings/categories';
 import MealListings from './Components/Listings/mealListings';
+import RecipeDetails from './Components/Recipe/recipeDetails';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -29,7 +30,7 @@ function App() {
       <Header/>
       <Routes>
        <Route path = "/" element = {<CategoryListings />} />
-        <Route path = "/meal/:id" element = {<MealListings />} />
+        <Route path = "/meal/:id" element = {<RecipeDetails />} />
         <Route path = "/meal/category/:name" element = {<MealListings />} />
       </Routes>
       <Footer/>
