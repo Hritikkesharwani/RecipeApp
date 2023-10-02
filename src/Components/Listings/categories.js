@@ -30,7 +30,7 @@ const CategoryListings = ({}) => {
   }, []);
 
   const handleCardClick = (item) => {
-    navigate(`/meal/category/${item.strCategory}`, {item});
+    navigate(`/meal/category/${item.strCategory}`,{ state: { ...item } });
     window.scrollTo(0, 0);
   }
 
