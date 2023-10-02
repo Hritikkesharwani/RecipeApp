@@ -19,9 +19,11 @@ const Header = () => {
   const handleSearch = async() => {
     try {
       let data = await axios.get(`search.php?s=${text}`)
-      console.log(data);
-      const { strCategory = "" } = data || {};
-      navigate(`/meal/category/${strCategory}`, {data});
+      console.log('kdfkfkfdk',data);
+      const { data:mealData = {} } = data || {};
+      const {meals = []} = mealData || {};
+      const {strCategory = ""} = meals[0];
+      navigate(`/meal/category/${strCategory}`);
       window.scrollTo(0, 0);
     } catch (error) {
       console.error('Error fetching data:', error);

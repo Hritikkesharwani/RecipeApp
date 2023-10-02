@@ -12,6 +12,7 @@ import Footer from './Components/Footer/footer';
 import CategoryListings from './Components/Listings/categories';
 import MealListings from './Components/Listings/mealListings';
 import RecipeDetails from './Components/Recipe/recipeDetails';
+import SurpriseMe from './Components/SurpriseMe/index'
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -21,13 +22,13 @@ function App() {
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
-  console.log('isndie ')
 
   return (
     <BrowserRouter>
     <ThemeProvider theme={theme}>
       <ResponsiveAppBar toggleTheme={toggleTheme}/>
       <Header/>
+      <SurpriseMe />
       <Routes>
        <Route path = "/" element = {<CategoryListings />} />
         <Route path = "/meal/:id" element = {<RecipeDetails />} />

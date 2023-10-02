@@ -17,8 +17,8 @@ const MealListings = ({}) => {
   const pathname = window.location.pathname;
   const parts = pathname.split('/');
   const category = parts[parts.length - 1];
-  console.log(state)
-  const { strCategoryDescription = '', strCategory = ''} = state || {}
+  console.log('djfnjnfdjfv',state)
+  const { strCategoryDescription = '', strCategory = '', data:mealData = []} = state || {}
 
   const getMealData = async () => {
     try {
@@ -42,13 +42,13 @@ const MealListings = ({}) => {
 
   return (
     <Container sx={{ marginTop: '32px' }}>
-    <Box sx={{border: `2px solid ${theme.palette.primary.main}`, padding:'16px'}}>
-    <Typography sx={{ fontSize: 16, fontWeight: 400}}>
-      {strCategoryDescription}
+    {strCategoryDescription && <Box sx={{border: `2px solid ${theme.palette.primary.main}`, padding:'16px'}}>
+      <Typography sx={{ fontSize: 16, fontWeight: 400}}>
+        {strCategoryDescription}
       </Typography>  
-    </Box>
+    </Box>}
       <Typography sx={{ fontSize: 36, fontWeight: 700, marginTop:'32px', borderBottom: `5px solid ${theme.palette.primary.main}`, width: '100px' }}>
-        {strCategory}
+        {category}
       </Typography>
       <Grid container items sx={{ marginTop: '32px' }} spacing={4}>
         {data.map((item) => {
