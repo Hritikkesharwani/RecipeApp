@@ -5,8 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
-import WhatshotIcon from '@mui/icons-material/Whatshot';
-import GrainIcon from '@mui/icons-material/Grain';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
 import React, { useEffect, useState, use } from 'react';
 import axios from '../../api/axios';
 import { FILTER_ITEM } from '../../contants';
@@ -20,8 +19,7 @@ const MealListings = ({}) => {
   const pathname = window.location.pathname;
   const parts = pathname.split('/');
   const category = parts[parts.length - 1];
-  console.log(state)
-  const { strCategoryDescription = '', strCategory = ''} = state || {}
+  const { strCategoryDescription = '', strCategory = '', data:mealData = []} = state || {}
 
   const getMealData = async () => {
     try {
@@ -40,47 +38,37 @@ const MealListings = ({}) => {
 
   const handleMealCardClick = (item) => {
     navigate(`/meal/${item.idMeal}`,{ state: { ...item } });
-    window.scrollTo(0, 0);
+    // window.scrollTo(400, 0);
   }
 
   return (
-    <Container sx={{ marginTop: '32px' }}>
+    <Container sx={{ marginTop: '32px',marginBottom:10 }}>
         <Box sx={{marginBottom: '32px' }}>
     <Breadcrumbs aria-label="breadcrumb">
         <Link
-          underline="hover"
-          sx={{ display: 'flex', alignItems: 'center' }}
+          style={{ display: 'flex', alignItems: 'center', textDecoration:'none' }}
           color="inherit"
-          to={''}
+          to={'/'}
         >
-          <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+          <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit"  />
           Home
-        </Link>
-        <Link
-          underline="hover"
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="inherit"
-          href="/material-ui/getting-started/installation/"
-        >
-          <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          Core
         </Link>
         <Typography
           sx={{ display: 'flex', alignItems: 'center' }}
           color="text.primary"
         >
-          <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          Breadcrumb
+          <FastfoodIcon sx={{ mr: 0.5 }} fontSize="inherit"  />
+          Meals
         </Typography>
       </Breadcrumbs>  
       </Box> 
-    <Box sx={{border: `2px solid ${theme.palette.primary.main}`, padding:'16px'}}>
+    {strCategoryDescription && <Box sx={{border: `2px solid ${theme.palette.primary.main}`, padding:'16px'}}>
     <Typography sx={{ fontSize: 16, fontWeight: 400}}>
       {strCategoryDescription}
       </Typography>  
-    </Box>
+    </Box>}
       <Typography sx={{ fontSize: 36, fontWeight: 700, marginTop:'32px', borderBottom: `5px solid ${theme.palette.primary.main}`, width: '100px' }}>
-        {strCategory}
+        {category}
       </Typography>
       <Grid container items sx={{ marginTop: '32px' }} spacing={4}>
         {data.map((item) => {
@@ -105,6 +93,7 @@ const MealListings = ({}) => {
                       height="180"
                       image={strMealThumb}
                       alt="meal img"
+                      loading='lazy'
                       sx={{
                         transition: 'transform 0.3s ease', // Add a transition for a smooth zoom effect
                         '&:hover': {
@@ -112,7 +101,7 @@ const MealListings = ({}) => {
                         },
                       }}
                     />
-                    <CardContent>
+                    <CardContent sx={{height:60}}>
                       <Typography gutterBottom variant="h5" component="div">
                         {strMeal}
                       </Typography>

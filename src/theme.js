@@ -7,8 +7,12 @@ const lightTheme = createTheme({
     primary: {
       //main: '#007acc',
       light:'#FAF3F0',
-      main:'#FFCF9D'
+      main:'#E97777'
     },
+    secondary: {
+      main:'#EFFFFD',
+      dark:'#85F4FF'
+    }
   },
 });
 
@@ -17,10 +21,14 @@ const darkTheme = createTheme({
     type: 'dark', // Dark mode
     primary: {
      // main: '#90caf9',
-      light:'#393053',
-      main:'#393053',
+      light:'#FAF0E6',
+      main:'#FAF0E6',
       dark:'#18122B'
     },
+    secondary: {
+      main:'#5C5470',
+      dark:'#B9B4C7'
+    }
   },
 });
 

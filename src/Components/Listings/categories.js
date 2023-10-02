@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../api/axios';
 import { FILTER_ITEM } from '../../contants';
 import { Link, useNavigate } from 'react-router-dom';
+import SurpriseMe from '../SurpriseMe';
 
 const CategoryListings = ({}) => {
   const theme = useTheme();
@@ -31,11 +32,12 @@ const CategoryListings = ({}) => {
 
   const handleCardClick = (item) => {
     navigate(`/meal/category/${item.strCategory}`,{ state: { ...item } });
-    window.scrollTo(0, 0);
+    window.scrollTo(400, 0);
   }
 
   return (
-    <Container sx={{ marginTop: '32px' }}>
+    <Container sx={{ marginTop: '32px',marginBottom:10 }}>
+      <SurpriseMe />
       <Typography sx={{ fontSize: 36, fontWeight: 700, borderBottom: `5px solid ${theme.palette.primary.main}`, width: '100px' }}>
         Categories
       </Typography>
@@ -53,6 +55,7 @@ const CategoryListings = ({}) => {
                     '&:hover': {
                       boxShadow: '0px 8px 12px rgba(0, 0, 0, 0.3)', // Apply box shadow on hover
                     },
+                    backgroundColor: theme.palette.secondary.dark
                   }}
                 >
                   <CardActionArea>
@@ -60,6 +63,7 @@ const CategoryListings = ({}) => {
                       component="img"
                       height="180"
                       image={strCategoryThumb}
+                      loading='lazy'
                       alt="meal img"
                       sx={{
                         transition: 'transform 0.3s ease', // Add a transition for a smooth zoom effect
@@ -68,8 +72,8 @@ const CategoryListings = ({}) => {
                         },
                       }}
                     />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
+                    <CardContent sx={{height:120}}>
+                      <Typography sx={{color:theme.palette.primary.main, fontWeight: 700}} gutterBottom variant="h5" component="div">
                         {strCategory}
                       </Typography>
                       {strCategoryDescription && (

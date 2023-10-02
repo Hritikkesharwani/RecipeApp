@@ -12,6 +12,8 @@ import Footer from './Components/Footer/footer';
 import CategoryListings from './Components/Listings/categories';
 import MealListings from './Components/Listings/mealListings';
 import RecipeDetails from './Components/Recipe/recipeDetails';
+import SurpriseMe from './Components/SurpriseMe/index';
+import './App.css';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -21,7 +23,8 @@ function App() {
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
-  console.log('isndie ')
+
+  document.body.className = isDarkMode ? 'dark-theme' : 'light-theme';
 
   return (
     <BrowserRouter>

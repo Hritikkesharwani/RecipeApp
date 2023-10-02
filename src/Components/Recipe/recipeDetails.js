@@ -1,10 +1,12 @@
 import { useTheme } from '@emotion/react';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Breadcrumbs, Container, Grid, Typography } from '@mui/material';
 import react, { useEffect, useState } from 'react';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
+import HomeIcon from '@mui/icons-material/Home';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import axios from '../../api/axios';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const RecipeDetails = () => {
    const [recipeData, setRecipeData] = useState({});
@@ -12,7 +14,7 @@ const RecipeDetails = () => {
    const [measure, setMeasure] = useState([])
    const theme = useTheme();
    const {state} = useLocation();
-   const { idMeal = ''} = state || {};
+   const { idMeal = '', isRandom} = state || {};
 
    const getRecipeDetails = async (idMeal) => {
     try {
@@ -54,9 +56,35 @@ const RecipeDetails = () => {
 
    const { strMeal = '', strYoutube = '', strInstructions = '', strArea = '', strCategory = '', strMealThumb = '', strTags = '', strSource = ''} = recipeData || {}
 
-   console.log('@@@@@',ingredients,measure)
     return (
-      <Container sx={{marginBottom:10}}>
+      <Container sx={{marginTop: '32px',marginBottom:10}}>
+      <Box sx={{marginBottom: '32px' }}>
+       <Breadcrumbs aria-label="breadcrumb">
+        <Link
+          style={{ display: 'flex', alignItems: 'center', textDecoration:'none' }}
+          color="inherit"
+          to={'/'}
+        >
+          <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit"  />
+          Home
+        </Link>
+       {!isRandom && <Link
+          style={{ display: 'flex', alignItems: 'center', textDecoration:'none' }}
+          color="inherit"
+          to={`/meal/category/${strCategory}`}
+        >
+          <FastfoodIcon sx={{ mr: 0.5 }} fontSize="inherit"  />
+          Meals
+        </Link>}
+        <Typography
+          sx={{ display: 'flex', alignItems: 'center' }}
+          color="text.primary"
+        >
+          <FastfoodIcon sx={{ mr: 0.5 }} fontSize="inherit"  />
+          Recipe
+        </Typography>
+      </Breadcrumbs>  
+      </Box> 
         <Typography
           sx={{
             fontSize: 36,
