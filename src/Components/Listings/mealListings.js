@@ -1,13 +1,16 @@
-import { Box, Container, Grid, useTheme } from '@mui/material';
+import { Box, Breadcrumbs, Container, Grid, useTheme } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import WhatshotIcon from '@mui/icons-material/Whatshot';
+import GrainIcon from '@mui/icons-material/Grain';
 import React, { useEffect, useState, use } from 'react';
 import axios from '../../api/axios';
 import { FILTER_ITEM } from '../../contants';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const MealListings = ({}) => {
   const theme = useTheme();
@@ -42,6 +45,35 @@ const MealListings = ({}) => {
 
   return (
     <Container sx={{ marginTop: '32px' }}>
+        <Box sx={{marginBottom: '32px' }}>
+    <Breadcrumbs aria-label="breadcrumb">
+        <Link
+          underline="hover"
+          sx={{ display: 'flex', alignItems: 'center' }}
+          color="inherit"
+          to={''}
+        >
+          <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+          Home
+        </Link>
+        <Link
+          underline="hover"
+          sx={{ display: 'flex', alignItems: 'center' }}
+          color="inherit"
+          href="/material-ui/getting-started/installation/"
+        >
+          <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+          Core
+        </Link>
+        <Typography
+          sx={{ display: 'flex', alignItems: 'center' }}
+          color="text.primary"
+        >
+          <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+          Breadcrumb
+        </Typography>
+      </Breadcrumbs>  
+      </Box> 
     <Box sx={{border: `2px solid ${theme.palette.primary.main}`, padding:'16px'}}>
     <Typography sx={{ fontSize: 16, fontWeight: 400}}>
       {strCategoryDescription}
