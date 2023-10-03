@@ -1,9 +1,10 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, useTheme } from '@mui/material';
 import React from 'react'
 import axios from '../../api/axios';
 import { useNavigate } from 'react-router-dom';
 
 const  SurpriseMe = () => {
+    const theme = useTheme()
     const navigate = useNavigate();
 
     const handleRandomClick = async() => {
@@ -19,12 +20,35 @@ const  SurpriseMe = () => {
         }
     }
     return (
-        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px'}}>
-            <Typography variant="h3">Can't decide what to eat today?</Typography>
-            <Typography variant="h6">Let's Pick for you!!</Typography>
-            <Button onClick={() => handleRandomClick()}>Random Pick</Button>
-        </Box>
-    )
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap:2,
+          alignItems: "center",
+          padding: "16px",
+          // backgroundColor: theme.palette.primary.main,
+          borderRadius: 4,
+          marginBottom: 4,
+          //boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.3)",
+         // transition: "box-shadow 0.3s ease",
+         // "&:hover": {
+         //   boxShadow: "0px 8px 12px rgba(0, 0, 0, 0.3)",
+         // },
+         border: `5px solid ${theme.palette.primary.main}`
+        }}
+      >
+        <Typography sx={{color : theme.palette.tertiary.main}} variant="h3">Can't decide what to eat today?</Typography>
+        <Typography sx={{color : theme.palette.tertiary.main}} variant="h6">Let's Pick for you!!</Typography>
+        <Button
+          onClick={() => handleRandomClick()}
+          sx={{ border:`2px solid ${theme.palette.primary.main}` }}
+          
+        >
+          Random Pick
+        </Button>
+      </Box>
+    );
 }
 
 export default SurpriseMe;

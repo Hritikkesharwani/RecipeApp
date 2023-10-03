@@ -1,4 +1,4 @@
-import { Box, Typography, Slide, useTheme, TextField, Button, IconButton, Fab, Snackbar, Alert } from '@mui/material';
+import { Box, Typography, Slide, useTheme, TextField, Button, IconButton, Fab, Snackbar, Alert, useMediaQuery } from '@mui/material';
 import React, {useState} from 'react';
 import { HeaderContent } from './styles';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
@@ -12,6 +12,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [text, setText] = useState('');
   const [err,setErr] = useState(false);
+  const mwebView = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleChangeText = (e) => {
     setText(e.target.value);
@@ -43,20 +44,20 @@ const Header = () => {
   };
 
   return (
-    <HeaderContent>
+    <HeaderContent sx={!mwebView ? {padding:'5rem'} : {padding:'2rem'}}>
       <Box sx={{display:'flex', flexDirection: 'column',alignItems:'center'}}>
         <Slide direction="left" in={!trigger}>
-          <Typography sx={{color : theme.palette.primary.light ,marginTop:'6rem', textAlign:'center'}} variant="h2">Welcome to Your Recipe App</Typography>
+          <Typography sx={{color : 'white' ,marginTop:mwebView ? '1rem' : '6rem', textAlign:'center'}} variant="h2">Welcome to Your Recipe App</Typography>
         </Slide>
         <Slide direction="right" in={!trigger}>
-          <Typography sx={{color : theme.palette.primary.light ,marginTop:'1rem', textAlign:'center'}} variant="h6">Discover and Create Delicious Recipes</Typography>
+          <Typography sx={{color : 'white' ,marginTop:'1rem', textAlign:'center'}} variant="h6">Discover and Create Delicious Recipes</Typography>
         </Slide>
         <Slide direction="up" in={!trigger}>
-            <Box display="flex" alignItems="center" sx={{marginTop:'1rem',width:'25%'}}>
+            <Box display="flex" alignItems="center" sx={{marginTop:'1rem',width:mwebView ? '80%' : '25%'}}>
               <TextField
                 variant="outlined"
                 placeholder={"Search for recipes"}
-                sx={{backgroundColor : theme.palette.secondary.main,
+                sx={{backgroundColor : 'white',
                 borderRadius:'25px',
                 width:'100%',
                 marginRight:'8px',

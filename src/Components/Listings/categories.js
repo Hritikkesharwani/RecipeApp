@@ -38,24 +38,25 @@ const CategoryListings = ({}) => {
   return (
     <Container sx={{ marginTop: '32px',marginBottom:10 }}>
       <SurpriseMe />
-      <Typography sx={{ fontSize: 36, fontWeight: 700, borderBottom: `5px solid ${theme.palette.primary.main}`, width: '100px' }}>
+      <Typography sx={{ color : theme.palette.tertiary.main, fontSize: 36, fontWeight: 700, borderBottom: `5px solid ${theme.palette.primary.main}`, width: '100px' }}>
         Categories
       </Typography>
-      <Grid container items sx={{ marginTop: '32px' }} spacing={4}>
+      <Grid container items sx={{ marginTop: '32px' }} justifyContent={'center'} spacing={4}>
         {data.map((item) => {
           const { strCategory = '', strCategoryThumb = '', strCategoryDescription = '' } = item || {};
           return (
-              <Grid xs={3} item>
+              <Grid xs={12} sm={6} md={4} lg={3} item sx={{display:'flex', justifyContent:'center'}} >
                 <Card
                 onClick={() => handleCardClick(item)}
                   sx={{
                     maxWidth: 345,
-                    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.3)', // Default box shadow
-                    transition: 'box-shadow 0.3s ease', // Add a transition for a smooth effect
+                    boxShadow: `0px 4px 6px ${theme.palette.shadow.main}`, 
+                    transition: 'box-shadow 0.3s ease', 
                     '&:hover': {
-                      boxShadow: '0px 8px 12px rgba(0, 0, 0, 0.3)', // Apply box shadow on hover
+                      boxShadow: `0px 8px 12px ${theme.palette.shadow.main}`, 
                     },
-                    backgroundColor: theme.palette.secondary.dark
+                    backgroundColor: theme.palette.secondary.main,
+                    borderRadius:4
                   }}
                 >
                   <CardActionArea>
@@ -79,8 +80,8 @@ const CategoryListings = ({}) => {
                       {strCategoryDescription && (
                         <Typography
                           variant="body2"
-                          color="text.secondary"
                           sx={{
+                            color : theme.palette.tertiary.main,
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
                             display: '-webkit-box',

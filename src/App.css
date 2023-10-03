@@ -1,7 +1,7 @@
 body.light-theme {
-  background-color: #EFFFFD; /* Light theme background color */
+  background-color: white; /* Light theme background color */
 }
 
 body.dark-theme {
-  background-color: #352F44; /* Dark theme background color */
+  background-color: black; /* Dark theme background color */
 }

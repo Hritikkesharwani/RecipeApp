@@ -44,17 +44,16 @@ const MealListings = ({}) => {
   return (
     <Container sx={{ marginTop: '32px',marginBottom:10 }}>
         <Box sx={{marginBottom: '32px' }}>
-    <Breadcrumbs aria-label="breadcrumb">
+    <Breadcrumbs separator={<Typography sx={{color : theme.palette.tertiary.main, fontWeight:700}}> {`>`} </Typography>} aria-label="breadcrumb">
         <Link
-          style={{ display: 'flex', alignItems: 'center', textDecoration:'none' }}
-          color="inherit"
+          style={{ display: 'flex', alignItems: 'center', textDecoration:'none',fontSize:18, fontWeight:700, color : theme.palette.tertiary.main }}
           to={'/'}
         >
           <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit"  />
           Home
         </Link>
         <Typography
-          sx={{ display: 'flex', alignItems: 'center' }}
+          style={{ display: 'flex', alignItems: 'center', textDecoration:'none',fontSize:18, fontWeight:700, color : theme.palette.tertiary.main }}
           color="text.primary"
         >
           <FastfoodIcon sx={{ mr: 0.5 }} fontSize="inherit"  />
@@ -63,11 +62,11 @@ const MealListings = ({}) => {
       </Breadcrumbs>  
       </Box> 
     {strCategoryDescription && <Box sx={{border: `2px solid ${theme.palette.primary.main}`, padding:'16px'}}>
-    <Typography sx={{ fontSize: 16, fontWeight: 400}}>
+    <Typography sx={{ color : theme.palette.tertiary.main, fontSize: 16, fontWeight: 400}}>
       {strCategoryDescription}
       </Typography>  
     </Box>}
-      <Typography sx={{ fontSize: 36, fontWeight: 700, marginTop:'32px', borderBottom: `5px solid ${theme.palette.primary.main}`, width: '100px' }}>
+      <Typography sx={{ color : theme.palette.tertiary.main,fontSize: 36, fontWeight: 700, marginTop:'32px', borderBottom: `5px solid ${theme.palette.primary.main}`, width: '100px' }}>
         {category}
       </Typography>
       <Grid container items sx={{ marginTop: '32px' }} spacing={4}>
@@ -75,16 +74,19 @@ const MealListings = ({}) => {
           const { strMeal = '', strMealThumb = '' } = item || {};
 
           return (
-              <Grid xs={3} item>
+              <Grid xs={12} sm={6} md={4} lg={3} item sx={{display:'flex', justifyContent:'center'}} item>
                 <Card
                 onClick={() => handleMealCardClick(item)}
                   sx={{
                     maxWidth: 345,
-                    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.3)', // Default box shadow
-                    transition: 'box-shadow 0.3s ease', // Add a transition for a smooth effect
+                    width:300,
+                    boxShadow: `0px 4px 6px ${theme.palette.shadow.main}`, 
+                    transition: 'box-shadow 0.3s ease', 
                     '&:hover': {
-                      boxShadow: '0px 8px 12px rgba(0, 0, 0, 0.3)', // Apply box shadow on hover
+                      boxShadow: `0px 8px 12px ${theme.palette.shadow.main}`, 
                     },
+                    backgroundColor: theme.palette.secondary.main,
+                    borderRadius:4
                   }}
                 >
                   <CardActionArea>
@@ -102,7 +104,7 @@ const MealListings = ({}) => {
                       }}
                     />
                     <CardContent sx={{height:60}}>
-                      <Typography gutterBottom variant="h5" component="div">
+                      <Typography sx={{color:theme.palette.primary.main, fontWeight: 700}} gutterBottom variant="h5" component="div">
                         {strMeal}
                       </Typography>
                     </CardContent>

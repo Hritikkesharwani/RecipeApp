@@ -59,9 +59,9 @@ const RecipeDetails = () => {
     return (
       <Container sx={{marginTop: '32px',marginBottom:10}}>
       <Box sx={{marginBottom: '32px' }}>
-       <Breadcrumbs aria-label="breadcrumb">
+       <Breadcrumbs separator={<Typography sx={{color : theme.palette.tertiary.main, fontWeight:700}}> {`>`} </Typography>} aria-label="breadcrumb">
         <Link
-          style={{ display: 'flex', alignItems: 'center', textDecoration:'none' }}
+          style={{ display: 'flex', alignItems: 'center', textDecoration:'none',fontSize:18, fontWeight:700, color : theme.palette.tertiary.main }}
           color="inherit"
           to={'/'}
         >
@@ -69,7 +69,7 @@ const RecipeDetails = () => {
           Home
         </Link>
        {!isRandom && <Link
-          style={{ display: 'flex', alignItems: 'center', textDecoration:'none' }}
+          style={{ display: 'flex', alignItems: 'center', textDecoration:'none',fontSize:18, fontWeight:700, color : theme.palette.tertiary.main }}
           color="inherit"
           to={`/meal/category/${strCategory}`}
         >
@@ -77,7 +77,7 @@ const RecipeDetails = () => {
           Meals
         </Link>}
         <Typography
-          sx={{ display: 'flex', alignItems: 'center' }}
+          sx={{ display: 'flex', alignItems: 'center', fontSize:18, fontWeight:700,color : theme.palette.tertiary.main }}
           color="text.primary"
         >
           <FastfoodIcon sx={{ mr: 0.5 }} fontSize="inherit"  />
@@ -91,28 +91,30 @@ const RecipeDetails = () => {
             fontWeight: 700,
             marginTop: "32px",
             borderBottom: `5px solid ${theme.palette.primary.main}`,
+            color : theme.palette.tertiary.main,
             width: "100px",
           }}
         >
           Recipe
         </Typography>
         <Grid sx={{ padding: "32px" }} container items spacing={6}>
-          <Grid item xs={6}>
+          <Grid item sm={12} md={6}>
             <Box sx={{}}>
-              <img src={strMealThumb} alt="" height={"100%"} width={"100%"} />
+              <img src={strMealThumb} alt="" height={"100%"} width={"100%"} style={{borderRadius:4, boxShadow: `0px 4px 6px ${theme.palette.shadow.main}`,}} />
             </Box>
           </Grid>
-          <Grid item container xs={6} flexDirection={"column"}>
+          <Grid item container sm={12} md={6} flexDirection={"column"}>
             <Typography
               sx={{
                 fontSize: 32,
                 fontWeight: 700,
                 borderBottom: `4px solid ${theme.palette.primary.main}`,
+                color : theme.palette.tertiary.main,
               }}
             >
               {strMeal}
             </Typography>
-            <Typography sx={{ marginTop: 3, fontWeight: 700, fontSize:20 }}>
+            <Typography sx={{ marginTop: 3, fontWeight: 700, fontSize:20, color : theme.palette.tertiary.main, }}>
               <span
                 style={{ color: theme.palette.primary.main, fontWeight: 700, fontSize:20 }}
               >
@@ -120,7 +122,7 @@ const RecipeDetails = () => {
               </span>
               {strCategory}
             </Typography>
-            <Typography sx={{ marginTop: 2, fontWeight: 700, fontSize:16 }}>
+            <Typography sx={{ color : theme.palette.tertiary.main, marginTop: 2, fontWeight: 700, fontSize:16 }}>
               <span
                 style={{ color: theme.palette.primary.main, fontWeight: 700, fontSize:16 }}
               >
@@ -128,23 +130,23 @@ const RecipeDetails = () => {
               </span>
               {strArea}
             </Typography>
-            <Typography sx={{ marginTop: 2, fontWeight: 700, fontSize:16 }}>
+            <Typography sx={{ color : theme.palette.tertiary.main, marginTop: 2, fontWeight: 700, fontSize:16 }}>
               <span
                 style={{ color: theme.palette.primary.main, fontWeight: 700, fontSize:16 }}
               >
                 Video -{" "} 
               </span>
-              <a href={strYoutube} style={{textDecoration:'none', color:theme.palette.primary.main}}>{strYoutube}</a>
+              <a href={strYoutube} style={{textDecoration:'none', color : theme.palette.tertiary.main}}>{strYoutube}</a>
             </Typography>
-            <Typography sx={{ marginTop: 2, fontWeight: 700, fontSize:16 }}>
+            <Typography sx={{ color : theme.palette.tertiary.main, marginTop: 2, fontWeight: 700, fontSize:16 }}>
               <span
                 style={{ color: theme.palette.primary.main, fontWeight: 700, fontSize:16 }}
               >
                 Source -{" "} 
               </span>
-              <a href={strSource} style={{textDecoration:'none', color:theme.palette.primary.main}}>{strSource}</a>
+              <a href={strSource} style={{textDecoration:'none', color : theme.palette.tertiary.main}}>{strSource}</a>
             </Typography>
-            <Typography sx={{ marginTop: 2, fontWeight: 700, fontSize:16 }}>
+            <Typography sx={{ color : theme.palette.tertiary.main, marginTop: 2, fontWeight: 700, fontSize:16 }}>
               <span
                 style={{ color: theme.palette.primary.main, fontWeight: 700, fontSize:16 }}
               >
@@ -155,18 +157,18 @@ const RecipeDetails = () => {
           </Grid>
         </Grid>
         <Container mt={2} sx={{padding:'0px 36px !important'}}>
-         <Typography sx={{fontSize:20,fontWeight:500}}>Ingredient and Measures : </Typography>
-         <Grid container sx={{border:`1px solid ${theme.palette.primary.main}`}} p={2} mt={2} spacing={1} >
+         <Typography sx={{color : theme.palette.tertiary.main, fontSize:20,fontWeight:700}}>Ingredient and Measures : </Typography>
+         <Grid container sx={{border:`3px solid ${theme.palette.primary.main}`, boxShadow: `0px 4px 6px ${theme.palette.shadow.main}`, borderRadius:4}} p={2} mt={2} spacing={1} >
           {ingredients.map((item,index) => <Grid item xs={6} container>
-              <RestaurantIcon sx={{marginRight:2}}/><Typography>{item}</Typography>{measure[index] && <Typography>{" - "}{measure[index]}</Typography>}
+              <RestaurantIcon sx={{color : theme.palette.tertiary.main,marginRight:2}}/><Typography sx={{color : theme.palette.tertiary.main,}}>{item}</Typography>{measure[index] && <Typography sx={{color : theme.palette.tertiary.main,}}>{" - "}{measure[index]}</Typography>}
           </Grid>)}
          </Grid>
         </Container>
         {strInstructions && <Container sx={{padding:'0px 36px !important', marginTop:4}}>
-         <Typography sx={{fontSize:20,fontWeight:500}}>Instructions </Typography>
-         <Grid container sx={{border:`1px solid ${theme.palette.primary.main}`}} p={2} mt={2} spacing={1} >
+         <Typography sx={{color : theme.palette.tertiary.main, fontSize:20,fontWeight:700}}>Instructions </Typography>
+         <Grid container sx={{border:`3px solid ${theme.palette.primary.main}`, boxShadow: `0px 4px 6px ${theme.palette.shadow.main}`, borderRadius:4}} p={2} mt={2} spacing={1} >
             {strInstructions.split('\r\n').filter(instruction => instruction.length > 1).map((item)=> <Box display={'flex'} alignItems={'center'} sx={{marginBottom:2}} >
-            <span><TaskAltIcon sx={{marginRight:2}}/></span><Typography>{item}</Typography>
+            <span><TaskAltIcon sx={{color : theme.palette.tertiary.main,marginRight:2}}/></span><Typography sx={{color : theme.palette.tertiary.main,}}>{item}</Typography>
             </Box>)}
          </Grid>
         </Container>}

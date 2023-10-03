@@ -13,14 +13,14 @@ function ResponsiveAppBar({toggleTheme = () => {}}) {
     const theme = useTheme();
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" >
       <Container maxWidth="xl" >
         <Toolbar disableGutters style={{display: 'flex', justifyContent:'space-between'}}>
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="\"
             sx={{
               mr: 2,
               fontFamily: 'monospace',
