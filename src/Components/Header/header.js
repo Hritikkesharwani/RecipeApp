@@ -47,7 +47,7 @@ const Header = () => {
     <HeaderContent sx={!mwebView ? {padding:'5rem'} : {padding:'2rem'}}>
       <Box sx={{display:'flex', flexDirection: 'column',alignItems:'center'}}>
         <Slide direction="left" in={!trigger}>
-          <Typography sx={{color : 'white' ,marginTop:mwebView ? '1rem' : '6rem', textAlign:'center'}} variant="h2">Welcome to Your Recipe App</Typography>
+          <Typography sx={{color : 'white' ,marginTop:mwebView ? '1rem' : '6rem', textAlign:'center'}} variant={mwebView ? "h3" : "h2"}>Welcome to Your Recipe App</Typography>
         </Slide>
         <Slide direction="right" in={!trigger}>
           <Typography sx={{color : 'white' ,marginTop:'1rem', textAlign:'center'}} variant="h6">Discover and Create Delicious Recipes</Typography>
