@@ -77,7 +77,7 @@ const RecipeDetails = () => {
           Meals
         </Link>}
         <Typography
-          sx={{ display: 'flex', alignItems: 'center', fontSize:18, fontWeight:700,color : theme.palette.tertiary.main }}
+          sx={{ display: 'flex', alignItems: 'center', fontSize:18, fontWeight:700, color : theme.palette.primary.main }}
           color="text.primary"
         >
           <FastfoodIcon sx={{ mr: 0.5 }} fontSize="inherit"  />
@@ -136,7 +136,7 @@ const RecipeDetails = () => {
               >
                 Video -{" "} 
               </span>
-              <a href={strYoutube} style={{textDecoration:'none', color : theme.palette.tertiary.main}}>{strYoutube}</a>
+              <a href={strYoutube} style={{borderBottom: `2px solid ${theme.palette.primary.main}`, textDecoration:'none', color : theme.palette.tertiary.main}}>Click here</a>
             </Typography>
             <Typography sx={{ color : theme.palette.tertiary.main, marginTop: 2, fontWeight: 700, fontSize:16 }}>
               <span
@@ -144,7 +144,7 @@ const RecipeDetails = () => {
               >
                 Source -{" "} 
               </span>
-              <a href={strSource} style={{textDecoration:'none', color : theme.palette.tertiary.main}}>{strSource}</a>
+              <a href={strSource} style={{borderBottom: `2px solid ${theme.palette.primary.main}`, textDecoration:'none', color : theme.palette.tertiary.main}}>Click here</a>
             </Typography>
             <Typography sx={{ color : theme.palette.tertiary.main, marginTop: 2, fontWeight: 700, fontSize:16 }}>
               <span

@@ -53,7 +53,7 @@ const MealListings = ({}) => {
           Home
         </Link>
         <Typography
-          style={{ display: 'flex', alignItems: 'center', textDecoration:'none',fontSize:18, fontWeight:700, color : theme.palette.tertiary.main }}
+          style={{ display: 'flex',  alignItems: 'center', textDecoration:'none',fontSize:18, fontWeight:700, color : theme.palette.primary.main }}
           color="text.primary"
         >
           <FastfoodIcon sx={{ mr: 0.5 }} fontSize="inherit"  />
