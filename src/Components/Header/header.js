@@ -51,8 +51,7 @@ const Header = () => {
         </Slide>
         <Slide direction="right" in={!trigger}>
           <Typography sx={{color : 'white' ,marginTop:'1rem', textAlign:'center'}} variant="h6">Discover and Create Delicious Recipes</Typography>
-        </Slide>
-        <Slide direction="up" in={!trigger}>
+        </Slide>    
             <Box display="flex" alignItems="center" sx={{marginTop:'1rem',width:mwebView ? '80%' : '25%'}}>
               <TextField
                 variant="outlined"
@@ -76,7 +75,6 @@ const Header = () => {
                 <SearchIcon onClick={() => handleSearch()}/>
               </Fab>
             </Box>
-          </Slide>
           <Snackbar open={err} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
           No Recipe Found
